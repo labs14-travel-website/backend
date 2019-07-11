@@ -1,11 +1,11 @@
 require("dotenv").config();
 
 // Postgres imports
-const pg = require("pg");
-pg.defaults.ssl = true;
+// const pg = require("pg");
+// pg.defaults.ssl = true;
 
 // Production database connection
-const dbConnection = process.env.DATABASE_URL || "development"
+const dbConnection = process.env.DATABASE_URL;
 
 // Postgres configurations
 // Command for running postgres locally:
