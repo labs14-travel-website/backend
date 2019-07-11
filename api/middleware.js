@@ -9,3 +9,4 @@ module.exports = server => {
   server.use(cors());
   server.use(morgan("dev"));
 };
+
