@@ -107,6 +107,33 @@ server.get('/a/:placeid', async (req, res) => {
   }
 });
 
+// The following example is a search request for places of type 'restaurant' within a 1500m radius of a point in Sydney, Australia, containing the word 'cruise':
+// https://github.com/googlemaps/google-maps-services-js/blob/master/spec/e2e/places-spec.js EXAMPLE TEST CODE
+// Example nearby req URL: https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=YOUR_API_KEY
+// URL that we have to target: https://maps.googleapis.com/maps/api/place/nearbysearch/output?parameters
+
+server.get('/a/nearby', async (req, res) => {
+  try {
+    const nearby = await googleMapsClient.placesNearby({
+      language: 'en',
+      location: [33.8670522, 151.1957362],
+      radius: 2000,
+      opennow: true
+    }).asPromise();
+
+    res.json({
+      status: 'success',
+      nearby,
+    });
+  } catch (error) {
+    console.log(error); // eslint-disable-line
+    res.status(500).json({
+      status: 'error',
+      error,
+    });
+  }
+});
+
 // Generic / route for initial server online status check
 const projectName = process.env.PROJECT_NAME || 'test';
 server.get('/', (req, res) => {
