@@ -77,13 +77,13 @@ server.get('/a', async (req, res) => {
 
     // parse data and cache to db if needed
 
-    res.send({
+    res.json({
       status: 'success',
       places: places.sort((a, b) => (b.rating - a.rating)),
     });
-  } catch (error) {
-    console.log(error); //eslint-disable-line
-    res.send(error);
+  } catch ({message}) {
+
+    res.json({message});
   }
 });
 
