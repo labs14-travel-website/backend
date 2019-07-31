@@ -116,7 +116,7 @@ server.get('/a/:placeid', async (req, res) => {
     });
   }
 });
-
+ 
 // The following example is a search request for places of type 'restaurant' within a 1500m radius of a point in Sydney, Australia, containing the word 'cruise':
 // https://github.com/googlemaps/google-maps-services-js/blob/master/spec/e2e/places-spec.js EXAMPLE TEST CODE
 // Example nearby req URL: https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=1500&type=restaurant&keyword=cruise&key=YOUR_API_KEY
